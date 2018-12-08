@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- mybatis配置信息，配置数据源和事务管理，整合后交给spring管理，在Application- .xml等文件中配置 -->
+</configuration>

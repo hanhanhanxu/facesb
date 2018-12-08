@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hx.ai.mapper.FacekuMapper" >
+  <resultMap id="BaseResultMap" type="hx.ai.pojo.Faceku" >
+    <result column="fid" property="fid" jdbcType="VARCHAR" />
+    <result column="userinfo" property="userinfo" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="gid" property="gid" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fid, userinfo, code, gid, uid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hx.ai.pojo.FacekuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from faceku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="hx.ai.pojo.FacekuExample" >
+    delete from faceku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hx.ai.pojo.Faceku" >
+    insert into faceku (fid, userinfo, code, 
+      gid, uid)
+    values (#{fid,jdbcType=VARCHAR}, #{userinfo,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{gid,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="hx.ai.pojo.Faceku" >
+    insert into faceku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="userinfo != null" >
+        userinfo,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="gid != null" >
+        gid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="userinfo != null" >
+        #{userinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="gid != null" >
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hx.ai.pojo.FacekuExample" resultType="java.lang.Integer" >
+    select count(*) from faceku
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update faceku
+    <set >
+      <if test="record.fid != null" >
+        fid = #{record.fid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userinfo != null" >
+        userinfo = #{record.userinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gid != null" >
+        gid = #{record.gid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update faceku
+    set fid = #{record.fid,jdbcType=VARCHAR},
+      userinfo = #{record.userinfo,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      gid = #{record.gid,jdbcType=VARCHAR},
+      uid = #{record.uid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectBygiduid" parameterType="string" resultType="string">
+    select code from faceku where gid = #{0} and uid = #{1}
+  </select>
+</mapper>
