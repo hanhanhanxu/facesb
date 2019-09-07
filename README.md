@@ -1,5 +1,9 @@
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
+
+
 # facesb
 智能人脸识别系统
+> 静态token，请修改为你注册后生成的token
 
 
 网站效果
